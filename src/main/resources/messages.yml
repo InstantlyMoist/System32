@@ -1,0 +1,10 @@
+//ABCDEFGHIJkLMNOPQRSTUVWYZ
+
+InvalidArgument: '&cArgument is invalid'
+InvalidPlayer: '&cThat player is invalid'
+MustBeAPlayer: '&cYou must be a player'
+NoPermission: '&cNo Permission'
+NoTargetBlock: '&cNo block in your range'
+NoTargetBlockOther: '&cNo block in their range'
+
+
