@@ -18,7 +18,7 @@ public class PlayerCommand implements CommandExecutor{
     }
 
     public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
-        if (sender.hasPermission("permission.test")) sender.sendMessage("Hi!");
+        if (sender.hasPermission("permission.test")) sender.sendMessage("Hi!"); 
         // player NAME set group rank
         // player NAME remove group
         // player NAME add permission permission
