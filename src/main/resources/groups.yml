@@ -1,0 +1,10 @@
+groups:
+  default:
+    default: true
+    permissions:
+      - 'essentials.help'
+    inheritance: []
+    info:
+      prefix: '&e'
+      build: false
+      suffix: ''
