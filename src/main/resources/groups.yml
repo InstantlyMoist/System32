@@ -5,6 +5,15 @@ groups:
       - 'essentials.help'
     inheritance: []
     info:
-      prefix: '&e'
+      prefix: '&8&oGuest: &7'
+      build: false
+      suffix: ''
+  moderator:
+    default: false
+    permissions:
+      - 'essentials.help'
+    inheritance: []
+    info:
+      prefix: '&b&oModerator: &7'
       build: false
       suffix: ''

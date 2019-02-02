@@ -2,3 +2,6 @@
 
 Settings:
   SaveDelay: 6000
+
+Chat:
+  Format: '%prefix%%player_name%%suffix%: '

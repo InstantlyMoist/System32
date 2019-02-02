@@ -14,6 +14,7 @@ public class GroupCommand implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
+        //group
         return true;
     }
 }

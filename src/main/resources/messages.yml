@@ -1,2 +1,13 @@
+# ABCDEFGHIJKLMNOPQRSTUVW
 
+GroupDoesNotExist: '&8&oSystem32: &7The group %group% does not exist!'
+GroupSet: '&8&oSystem32: &7The group from %player_name% has been set to %group%!'
+PlayerNotOnline: '&8&oSystem32: &7The player %player_name% is not online!'
+RemovedGroup: '&8&oSystem32: &7The group from %player_name% has been removed, putting her back to the default rank!'
+UnknownArgument: '&8&oSystem32: &7The arguments you specified are unknown. Please do /%command% help'
 
+# to sort
+AddedPermission: '&8&oSystem32: &7Added %permission% to %player_name%'
+AlreadyHasPermission: '&8&oSystem32: &7%player_name% already has the permission %permission%'
+RemovedPermission: '&8&oSystem32: &7Removed %permission% from %player_name%'
+DoesntHavePermission: '&8&oSystem32: &7%player_name% does not have the permission %permission%'

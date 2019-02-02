@@ -36,5 +36,17 @@ public class Group {
     public boolean isDefaultGroup() {
         return defaultGroup;
     }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public List<String> getPermissions() {
+        return permissions;
+    }
 }
 

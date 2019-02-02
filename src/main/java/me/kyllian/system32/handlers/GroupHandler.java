@@ -31,7 +31,7 @@ public class GroupHandler {
     }
 
     public void loadGroups() {
-        for (String group : configuration.getConfigurationSection("groups").getKeys(true)) {
+        for (String group : configuration.getConfigurationSection("groups").getKeys(false)) {
             groups.add(new Group(plugin, group));
         }
     }

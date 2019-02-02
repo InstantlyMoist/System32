@@ -55,7 +55,7 @@ public class PlayerDataHandler extends BukkitRunnable implements Listener {
         Player player = event.getPlayer();
         if (!players.containsKey(player))
             players.put(player.getUniqueId(), new System32Player(plugin, player.getUniqueId()));
-        System32Player system32Player = players.get(player.getUniqueId());
+        System32Player system32Player = getPlayerData(player.getUniqueId());
         Bukkit.getLogger().info(system32Player.getGroup().getName() + "");
     }
 
@@ -67,6 +67,10 @@ public class PlayerDataHandler extends BukkitRunnable implements Listener {
             system32Player.savePlayerData();
             players.remove(player);
         }
+    }
+
+    public System32Player getPlayerData(UUID uuid) {
+        return players.computeIfAbsent(uuid, f -> new System32Player(plugin, uuid));
     }
 
     public File getPlayerFolder() {

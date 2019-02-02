@@ -35,7 +35,15 @@ public class ConfigurationHandler {
         configuration = YamlConfiguration.loadConfiguration(configurationFile);
     }
 
+    // Settings
+
     public int getSaveDelay() {
         return configuration.getInt("Settings.SaveDelay");
+    }
+
+    // Chat
+
+    public String getFormat() {
+        return configuration.getString("Chat.Format");
     }
 }
