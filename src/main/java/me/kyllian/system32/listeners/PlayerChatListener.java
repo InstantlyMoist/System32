@@ -31,6 +31,7 @@ public class PlayerChatListener implements Listener {
         String finalMessage = format.replace("%prefix%", plugin.getMessageHandler().translateColors(system32Player.getGroup().getPrefix()));
         finalMessage = finalMessage.replace("%suffix%", plugin.getMessageHandler().translateColors(system32Player.getGroup().getSuffix()));
         finalMessage = finalMessage.replace("%player_name%", player.getName());
+        finalMessage = plugin.getMessageHandler().translateColors(player, finalMessage);
         return plugin.getMessageHandler().translateColors(player, "essentials.chat", finalMessage + message);
     }
 }

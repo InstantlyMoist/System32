@@ -2,6 +2,7 @@ package me.kyllian.system32;
 
 import me.kyllian.system32.commands.GroupCommand;
 import me.kyllian.system32.commands.PlayerCommand;
+import me.kyllian.system32.commands.SpawnCommand;
 import me.kyllian.system32.handlers.*;
 import me.kyllian.system32.listeners.PlayerChatListener;
 import me.kyllian.system32.utils.UpdateChecker;
@@ -16,6 +17,7 @@ public class System32Plugin extends JavaPlugin {
     private MessageHandler messageHandler;
     private PlayerDataHandler playerHandler;
     private GroupHandler groupHandler;
+    private SpawnHandler spawnHandler;
 
     private UpdateChecker updateChecker;
 
@@ -33,6 +35,7 @@ public class System32Plugin extends JavaPlugin {
         messageHandler = new MessageHandler(this);
         groupHandler = new GroupHandler(this);
         playerHandler = new PlayerDataHandler(this);
+        spawnHandler = new SpawnHandler(this);
         groupHandler.loadGroups();
 
         updateChecker = new UpdateChecker(this,37249 );
@@ -42,6 +45,7 @@ public class System32Plugin extends JavaPlugin {
     public void initializeCommands() {
         getCommand("group").setExecutor(new GroupCommand(this));
         getCommand("player").setExecutor(new PlayerCommand(this));
+        getCommand("spawn").setExecutor(new SpawnCommand(this));
     }
 
     public void initializeListeners() {
@@ -66,5 +70,9 @@ public class System32Plugin extends JavaPlugin {
 
     public UpdateChecker getUpdateChecker() {
         return updateChecker;
+    }
+
+    public SpawnHandler getSpawnHandler() {
+        return spawnHandler;
     }
 }

@@ -1,12 +1,16 @@
 name: System32
-version: 1.0
+version: 1.001
 description: The must have essential for every server!
 main: me.kyllian.system32.System32Plugin
+softdepend: [PlaceholderAPI]
 
 commands:
   group:
     usage: /<command>
     description: Default
   player:
+    usage: /<command>
+    description: Default
+  spawn:
     usage: /<command>
     description: Default

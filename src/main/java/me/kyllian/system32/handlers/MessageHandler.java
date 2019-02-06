@@ -1,5 +1,7 @@
 package me.kyllian.system32.handlers;
 
+import me.clip.placeholderapi.PlaceholderAPI;
+import me.clip.placeholderapi.PlaceholderHook;
 import me.kyllian.system32.System32Plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -39,6 +41,11 @@ public class MessageHandler {
 
     public String translateColors(String message) {
         return ChatColor.translateAlternateColorCodes('&', message);
+    }
+
+    public String translateColors(Player player, String message) {
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) message = PlaceholderAPI.setPlaceholders(player, message);
+        return translateColors(message);
     }
 
     public String translateColors(Player player, String permission, String message) {
@@ -182,5 +189,29 @@ public class MessageHandler {
 
     public String getUpdateFoundMessage(String oldVersion, String newVersion) {
         return translateColors(configuration.getString("UpdateFound").replace("%oldversion%", oldVersion).replace("%newversion%", newVersion).replace("%url&", plugin.getUpdateChecker().getResourceURL()));
+    }
+
+    public String getMustBeAPlayerMessage() {
+        return translateColors(configuration.getString("MustBeAPlayer"));
+    }
+
+    public String getSpawnNotSetMessage() {
+        return translateColors(configuration.getString("SpawnNotSet"));
+    }
+
+    public String getTeleportedToSpawnMessage() {
+        return translateColors(configuration.getString("TeleportedToSpawn"));
+    }
+
+    public String getTeleportedOtherToSpawnMessage(String playerName) {
+        return translateColors(configuration.getString("TeleportedOtherToSpawn").replace("%player_name%", playerName));
+    }
+
+    public String getSpawnSetMessage() {
+        return translateColors(configuration.getString("SpawnSet"));
+    }
+
+    public String getSpawnRemovedMessage() {
+        return translateColors(configuration.getString("SpawnRemoved"));
     }
 }
