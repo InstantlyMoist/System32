@@ -1,5 +1,5 @@
 name: System32
-version: 1.001
+version: 1.002
 description: The must have essential for every server!
 main: me.kyllian.system32.System32Plugin
 softdepend: [PlaceholderAPI]
@@ -14,3 +14,10 @@ commands:
   spawn:
     usage: /<command>
     description: Default
+  setspawn:
+    usage: /<command>
+    description: Default
+  delspawn:
+    usage: /<command>
+    description: Default
+    aliases: [removespawn, remspawn, deletespawn]

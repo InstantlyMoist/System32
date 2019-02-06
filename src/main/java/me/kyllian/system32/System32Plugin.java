@@ -45,7 +45,10 @@ public class System32Plugin extends JavaPlugin {
     public void initializeCommands() {
         getCommand("group").setExecutor(new GroupCommand(this));
         getCommand("player").setExecutor(new PlayerCommand(this));
-        getCommand("spawn").setExecutor(new SpawnCommand(this));
+        SpawnCommand spawnCommand = new SpawnCommand(this);
+        getCommand("spawn").setExecutor(spawnCommand);
+        getCommand("delspawn").setExecutor(spawnCommand);
+        getCommand("setspawn").setExecutor(spawnCommand);
     }
 
     public void initializeListeners() {
