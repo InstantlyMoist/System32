@@ -74,10 +74,14 @@ public class System32Player {
     }
 
     public boolean addPermission(String permission) {
-        if (Bukkit.getPlayer(uuid).hasPermission(permission)) return false;
+        if (permissions.contains(permission)) return false;
         if (!permission.startsWith("-")) permissionAttachment.setPermission(permission, true);
         else permissionAttachment.unsetPermission(permission.replace("-", ""));
         return true;
+    }
+
+    public void addInheritPermission(String permission) {
+        permissionAttachment.setPermission(permission, true);
     }
 
     public void addPlayerPermission(String permission) {
@@ -85,7 +89,7 @@ public class System32Player {
     }
 
     public boolean removePermission(String permission) {
-        if (!Bukkit.getPlayer(uuid).hasPermission(permission)) return false;
+        if (!permissions.contains(permission)) return false;
         permissionAttachment.unsetPermission(permission.replace("-", ""));
         permissions.remove(permission);
         return true;
@@ -97,6 +101,12 @@ public class System32Player {
         permissionAttachment = Bukkit.getPlayer(uuid).addAttachment(plugin);
         group.getPermissions().forEach(permission -> {
             addPermission(permission);
+        });
+        group.getInheritance().forEach(name -> {
+            Group group = plugin.getGroupHandler().getByName(name);
+            group.getPermissions().forEach(permission -> {
+                addInheritPermission(permission);
+            });
         });
         permissions.forEach(permission -> {
             addPermission(permission);
@@ -115,5 +125,9 @@ public class System32Player {
 
     public PermissionAttachment getPermissionAttachment() {
         return permissionAttachment;
+    }
+
+    public List<String> getPermissions() {
+        return permissions;
     }
 }

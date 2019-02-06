@@ -1,8 +1,11 @@
 package me.kyllian.system32;
 
+import me.kyllian.system32.commands.GroupCommand;
 import me.kyllian.system32.commands.PlayerCommand;
 import me.kyllian.system32.handlers.*;
 import me.kyllian.system32.listeners.PlayerChatListener;
+import me.kyllian.system32.utils.UpdateChecker;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class System32Plugin extends JavaPlugin {
@@ -14,7 +17,10 @@ public class System32Plugin extends JavaPlugin {
     private PlayerDataHandler playerHandler;
     private GroupHandler groupHandler;
 
+    private UpdateChecker updateChecker;
+
     public void onEnable() {
+        Metrics metrics = new Metrics(this);
         initializeHandlers();
         initializeCommands();
         initializeListeners();
@@ -28,10 +34,13 @@ public class System32Plugin extends JavaPlugin {
         groupHandler = new GroupHandler(this);
         playerHandler = new PlayerDataHandler(this);
         groupHandler.loadGroups();
+
+        updateChecker = new UpdateChecker(this,37249 );
         //TODO: Initialize handlers
     }
 
     public void initializeCommands() {
+        getCommand("group").setExecutor(new GroupCommand(this));
         getCommand("player").setExecutor(new PlayerCommand(this));
     }
 
@@ -53,5 +62,9 @@ public class System32Plugin extends JavaPlugin {
 
     public MessageHandler getMessageHandler() {
         return messageHandler;
+    }
+
+    public UpdateChecker getUpdateChecker() {
+        return updateChecker;
     }
 }

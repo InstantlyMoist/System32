@@ -23,7 +23,31 @@
                     <finalName>System32</finalName>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.0</version>
+                <!-- Do not include the <configuration>...</configuration> part if you are using Sponge! -->
+                <configuration>
+                    <relocations>
+                        <relocation>
+                            <pattern>org.bstats</pattern>
+                            <!-- Replace this with your package! -->
+                            <shadedPattern>me.kyllian.system32</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+
     </build>
 
     <repositories>
@@ -32,8 +56,8 @@
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
-            <id>aikar</id>
-            <url>https://repo.aikar.co/content/groups/aikar/</url>
+            <id>CodeMC</id>
+            <url>https://repo.codemc.org/repository/maven-public</url>
         </repository>
     </repositories>
 
@@ -45,6 +69,13 @@
             <artifactId>spigot-api</artifactId>
             <version>1.13.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <!--bStats API-->
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>1.4</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

@@ -69,19 +69,118 @@ public class MessageHandler {
 
     // to sort
 
-    public String getAddedPermissionMessage(String playerName, String permission) {
-        return translateColors(configuration.getString("AddedPermission").replace("%player_name%", playerName).replace("%permission%", permission));
+    public String getAddedPermissionMessagePlayer(String playerName, String permission) {
+        return translateColors(configuration.getString("AddedPermissionPlayer").replace("%player_name%", playerName).replace("%permission%", permission));
     }
 
-    public String getAlreadyHasPermissionMessage(String playerName, String permission) {
-        return translateColors(configuration.getString("AlreadyHasPermission").replace("%player_name%", playerName).replace("%permission%", permission));
+    public String getAlreadyHasPermissionMessagePlayer(String playerName, String permission) {
+        return translateColors(configuration.getString("AlreadyHasPermissionPlayer").replace("%player_name%", playerName).replace("%permission%", permission));
     }
 
-    public String getRemovedPermissionMessage(String playerName, String permission) {
-        return translateColors(configuration.getString("RemovedPermission").replace("%player_name%", playerName).replace("%permission%", permission));
+    public String getRemovedPermissionMessagePlayer(String playerName, String permission) {
+        return translateColors(configuration.getString("RemovedPermissionPlayer").replace("%player_name%", playerName).replace("%permission%", permission));
     }
 
-    public String getDoesntHavePermissionMessage(String playerName, String permission) {
-        return translateColors(configuration.getString("DoesntHavePermission").replace("%player_name%", playerName).replace("%permission%", permission));
+    public String getDoesntHavePermissionMessagePlayer(String playerName, String permission) {
+        return translateColors(configuration.getString("DoesntHavePermissionPlayer").replace("%player_name%", playerName).replace("%permission%", permission));
+    }
+
+    public String getAddedPermissionMessageGroup(String permission, String groupName) {
+        return translateColors(configuration.getString("AddedPermissionGroup").replace("%permission%", permission).replace("%group%", groupName));
+    }
+
+    public String getAlreadyHasPermissionMessageGroup(String permission, String groupName) {
+        return translateColors(configuration.getString("AlreadyHasPermissionGroup").replace("%permission%", permission).replace("%group%", groupName));
+    }
+
+    public String getRemovedPermissionMessageGroup(String permission, String groupName) {
+        return translateColors(configuration.getString("RemovedPermissionGroup").replace("%permission%", permission).replace("%group%", groupName));
+    }
+
+    public String getDoesntHavePermissionMessageGroup(String permission, String groupName) {
+        return translateColors(configuration.getString("DoesntHavePermissionGroup").replace("%permission%", permission).replace("%group%", groupName));
+    }
+
+    public String getHasPermissionsMessage(String playerName, String permissions, String groupName) {
+        return translateColors(configuration.getString("HasPermission").replace("%player_name%", playerName).replace("%permissions%", permissions).replace("%group%", groupName));
+    }
+
+    public String getIsGroupMessage(String playerName, String groupName) {
+        return translateColors(configuration.getString("IsGroup").replace("%group%", groupName).replace("%player_name%", playerName));
+    }
+
+    public String getNeedPermissionMessage(String permission) {
+        return translateColors(configuration.getString("NeedPermission").replace("%permission%", permission));
+    }
+
+    public String getGroupAlreadyExistsMessage(String groupName) {
+        return translateColors(configuration.getString("GroupAlreadyExists").replace("%group%", groupName));
+    }
+
+    public String getGroupCreatedMessage(String groupName) {
+        return translateColors(configuration.getString("GroupCreated").replace("%group%", groupName));
+    }
+
+    public String getGroupRemovedMessage(String groupName) {
+        return translateColors(configuration.getString("GroupRemoved").replace("%group%", groupName));
+    }
+
+    public String getRemovedSuffixMessage(String groupName) {
+        return translateColors(configuration.getString("RemovedSuffix").replace("%group%", groupName));
+    }
+
+    public String getRemovedPrefixmessage(String groupName) {
+        return translateColors(configuration.getString("RemovedPrefix").replace("%group%", groupName));
+    }
+
+    public String getSetSuffixMessage(String groupName, String suffix) {
+        return translateColors(configuration.getString("SetSuffix").replace("%group%", groupName).replace("%suffix%", suffix));
+    }
+
+    public String getSetPrefixMessage(String groupName, String prefix) {
+        return translateColors(configuration.getString("SetPrefix").replace("%group%", groupName).replace("%prefix%", prefix));
+    }
+
+    public String getGroupShowInheritanceMessage(String groupName, String groups) {
+        return translateColors(configuration.getString("GroupShowInheritance").replace("%group%", groupName).replace("%groups%", groups));
+    }
+
+    public String getGroupShowPermissionsMessage(String groupName, String permissions) {
+        return translateColors(configuration.getString("GroupShowPermissions").replace("%group%", groupName).replace("%permissions%", permissions));
+    }
+
+    public String getGroupShowPrefixMessage(String groupName, String prefix) {
+        return translateColors(configuration.getString("GroupShowPrefix").replace("%group%", groupName).replace("%prefix%", prefix));
+    }
+    public String getGroupShowSuffixMessage(String groupName, String suffix) {
+        return translateColors(configuration.getString("GroupShowSuffix").replace("%group%", groupName).replace("%suffix%", suffix));
+    }
+
+    public String getAddedInheritageMessage(String groupName, String inherit) {
+        return translateColors(configuration.getString("AddedInheritage").replace("%group&", groupName).replace("%inherit%", inherit));
+    }
+
+    public String getAlreadyInheritsMessage(String groupName, String inherit) {
+        return translateColors(configuration.getString("AlreadyInherits").replace("%group&", groupName).replace("%inherit%", inherit));
+    }
+
+    public String getRemovedInheritageMessage(String groupName, String inherit) {
+        return translateColors(configuration.getString("RemovedInheritage").replace("%group&", groupName).replace("%inherit%", inherit));
+    }
+
+    public String getDoesntInheritMessage(String groupName, String inherit) {
+        return translateColors(configuration.getString("DoesntInherit").replace("%group&", groupName).replace("%inherit%", inherit));
+    }
+
+    public String getCheckingUpdateMessage() {
+        return translateColors(configuration.getString("CheckingUpdate"));
+    }
+
+    public String getUpdateNotFoundMessage() {
+        return translateColors(configuration.getString("UpdateNotFound"));
+    }
+
+    public String getUpdateFoundMessage(String oldVersion, String newVersion) {
+        return translateColors(configuration.getString("UpdateFound").replace("%oldversion%", oldVersion).replace("%newversion%", newVersion).replace("%url&", plugin.getUpdateChecker().getResourceURL()));
     }
 }

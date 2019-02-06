@@ -18,11 +18,6 @@ public class PlayerCommand implements CommandExecutor{
     }
 
     public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
-        if (sender.hasPermission("permission.test")) sender.sendMessage("Hi!"); 
-        // player NAME set group rank
-        // player NAME remove group
-        // player NAME add permission permission
-        // player NAME remove permission permission
         if (args.length == 3) {
             Player player = Bukkit.getPlayer(args[0]);
             if (player == null) {
@@ -30,8 +25,30 @@ public class PlayerCommand implements CommandExecutor{
                 return true;
             }
             System32Player system32Player = plugin.getPlayerHandler().getPlayerData(player.getUniqueId());
+            if (args[2].equalsIgnoreCase("permission")) {
+                if (args[1].equalsIgnoreCase("show")) {
+                    if (!sender.hasPermission("player.permission.show")) {
+                        sender.sendMessage(plugin.getMessageHandler().getNeedPermissionMessage("player.permission.show"));
+                        return true;
+                    }
+                    sender.sendMessage(plugin.getMessageHandler().getHasPermissionsMessage(args[0], String.join(", ",system32Player.getPermissions()), system32Player.getGroup().getName()));
+                    return true;
+                }
+            }
             if (args[2].equalsIgnoreCase("group")) {
+                if (args[1].equalsIgnoreCase("show")) {
+                    if (!sender.hasPermission("player.group.show")) {
+                        sender.sendMessage(plugin.getMessageHandler().getNeedPermissionMessage("player.group.show"));
+                        return true;
+                    }
+                    sender.sendMessage(plugin.getMessageHandler().getIsGroupMessage(args[0], system32Player.getGroup().getName()));
+                    return true;
+                }
                 if (args[1].equalsIgnoreCase("remove")) {
+                    if (!sender.hasPermission("player.group.remove")) {
+                        sender.sendMessage(plugin.getMessageHandler().getNeedPermissionMessage("player.group.remove"));
+                        return true;
+                    }
                     system32Player.setGroup(plugin.getGroupHandler().getDefaultGroup());
                     sender.sendMessage(plugin.getMessageHandler().getRemovedRankMessage(args[0]));
                     return true;
@@ -47,22 +64,29 @@ public class PlayerCommand implements CommandExecutor{
             System32Player system32Player = plugin.getPlayerHandler().getPlayerData(player.getUniqueId());
             if (args[2].equalsIgnoreCase("permission")) {
                 if (args[1].equalsIgnoreCase("add")) {
-                    Bukkit.broadcastMessage(system32Player.getPermissionAttachment().getPermissions().keySet() + "");
-                    sender.sendMessage(system32Player.addPermission(args[3]) ?
-                            plugin.getMessageHandler().getAddedPermissionMessage(args[0], args[3]) :
-                            plugin.getMessageHandler().getAlreadyHasPermissionMessage(args[0], args[3]));
-                    if (player.hasPermission(args[3])) system32Player.addPlayerPermission(args[3]);
-                    system32Player.savePlayerData();
-                    Bukkit.broadcastMessage(system32Player.getPermissionAttachment().getPermissions().keySet() + "");
+                    if (!sender.hasPermission("player.permission.add")) {
+                        sender.sendMessage(plugin.getMessageHandler().getNeedPermissionMessage("player.permission.add"));
+                        return true;
+                    }
+                    boolean added = system32Player.addPermission(args[3]);
+                    sender.sendMessage(added ?
+                            plugin.getMessageHandler().getAddedPermissionMessagePlayer(args[0], args[3]) :
+                            plugin.getMessageHandler().getAlreadyHasPermissionMessagePlayer(args[0], args[3]));
+                    if (added) {
+                        system32Player.addPlayerPermission(args[3]);
+                        system32Player.savePlayerData();
+                    }
                     return true;
                 }
                 if (args[1].equalsIgnoreCase("remove")) {
-                    Bukkit.broadcastMessage(system32Player.getPermissionAttachment().getPermissions().keySet() + "");
+                    if (!sender.hasPermission("player.permission.remove")) {
+                        sender.sendMessage(plugin.getMessageHandler().getNeedPermissionMessage("player.permission.remove"));
+                        return true;
+                    }
                     sender.sendMessage(system32Player.removePermission(args[3]) ?
-                            plugin.getMessageHandler().getRemovedPermissionMessage(args[0], args[3]) :
-                            plugin.getMessageHandler().getDoesntHavePermissionMessage(args[0], args[3]));
+                            plugin.getMessageHandler().getRemovedPermissionMessagePlayer(args[0], args[3]) :
+                            plugin.getMessageHandler().getDoesntHavePermissionMessagePlayer(args[0], args[3]));
                     system32Player.savePlayerData();
-                    Bukkit.broadcastMessage(system32Player.getPermissionAttachment().getPermissions().keySet() + "");
                     return true;
                 }
             }
@@ -73,6 +97,10 @@ public class PlayerCommand implements CommandExecutor{
                     return true;
                 }
                 if (args[1].equalsIgnoreCase("set")) {
+                    if (!sender.hasPermission("player.group.set")) {
+                        sender.sendMessage(plugin.getMessageHandler().getNeedPermissionMessage("player.group.set"));
+                        return true;
+                    }
                     system32Player.setGroup(group);
                     sender.sendMessage(plugin.getMessageHandler().getGroupSetMessage(args[0], args[3]));
                     return true;

@@ -32,11 +32,29 @@ public class GroupHandler {
 
     public void loadGroups() {
         for (String group : configuration.getConfigurationSection("groups").getKeys(false)) {
-            groups.add(new Group(plugin, group));
+            groups.add(new Group(plugin, group, false));
         }
     }
 
+    public void addGroup(String group) {
+        groups.add(new Group(plugin, group, true));
+    }
+
+    public void removeGroup(String group) {
+        configuration.set("groups." +  group, null);
+        groups.remove(getByName(group));
+        saveGroups();
+    }
+
     public void saveGroups() {
+        for (Group group : groups) {
+            configuration.set("groups." + group.getName() + ".default", group.isDefaultGroup());
+            configuration.set("groups." + group.getName() + ".permissions", group.getPermissions());
+            configuration.set("groups." + group.getName() + ".inheritance", group.getInheritance());
+            configuration.set("groups." + group.getName() + ".info.prefix", group.getPrefix());
+            configuration.set("groups." + group.getName() + ".info.build", group.isBuild());
+            configuration.set("groups." + group.getName() + ".info.suffix", group.getSuffix());
+        }
         // TODO: Add command to add permissions for a group and load them directly
         try {
             configuration.save(groupFile);

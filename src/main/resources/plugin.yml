@@ -4,6 +4,9 @@ description: The must have essential for every server!
 main: me.kyllian.system32.System32Plugin
 
 commands:
+  group:
+    usage: /<command>
+    description: Default
   player:
     usage: /<command>
     description: Default
