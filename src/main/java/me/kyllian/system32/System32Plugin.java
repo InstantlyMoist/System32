@@ -1,8 +1,6 @@
 package me.kyllian.system32;
 
-import me.kyllian.system32.commands.GroupCommand;
-import me.kyllian.system32.commands.PlayerCommand;
-import me.kyllian.system32.commands.SpawnCommand;
+import me.kyllian.system32.commands.*;
 import me.kyllian.system32.handlers.*;
 import me.kyllian.system32.listeners.PlayerChatListener;
 import me.kyllian.system32.utils.UpdateChecker;
@@ -18,6 +16,7 @@ public class System32Plugin extends JavaPlugin {
     private PlayerDataHandler playerHandler;
     private GroupHandler groupHandler;
     private SpawnHandler spawnHandler;
+    private WarpHandler warpHandler;
 
     private UpdateChecker updateChecker;
 
@@ -36,7 +35,9 @@ public class System32Plugin extends JavaPlugin {
         groupHandler = new GroupHandler(this);
         playerHandler = new PlayerDataHandler(this);
         spawnHandler = new SpawnHandler(this);
+        warpHandler = new WarpHandler(this);
         groupHandler.loadGroups();
+        warpHandler.loadWarps();
 
         updateChecker = new UpdateChecker(this,37249 );
         //TODO: Initialize handlers
@@ -49,6 +50,20 @@ public class System32Plugin extends JavaPlugin {
         getCommand("spawn").setExecutor(spawnCommand);
         getCommand("delspawn").setExecutor(spawnCommand);
         getCommand("setspawn").setExecutor(spawnCommand);
+        getCommand("system32").setExecutor(new System32Command(this));
+        getCommand("heal").setExecutor(new HealCommand(this));
+        getCommand("feed").setExecutor(new FeedCommand(this));
+        GamemodeCommand gamemodeCommand = new GamemodeCommand(this);
+        getCommand("gamemode").setExecutor(gamemodeCommand);
+        getCommand("gms").setExecutor(gamemodeCommand);
+        getCommand("gmc").setExecutor(gamemodeCommand);
+        getCommand("gma").setExecutor(gamemodeCommand);
+        getCommand("gmsp").setExecutor(gamemodeCommand);
+        WarpCommand warpCommand = new WarpCommand(this);
+        getCommand("warp").setExecutor(warpCommand);
+        getCommand("warps").setExecutor(warpCommand);
+        getCommand("setwarp").setExecutor(warpCommand);
+        getCommand("delwarp").setExecutor(warpCommand);
     }
 
     public void initializeListeners() {
@@ -77,5 +92,9 @@ public class System32Plugin extends JavaPlugin {
 
     public SpawnHandler getSpawnHandler() {
         return spawnHandler;
+    }
+
+    public WarpHandler getWarpHandler() {
+        return warpHandler;
     }
 }

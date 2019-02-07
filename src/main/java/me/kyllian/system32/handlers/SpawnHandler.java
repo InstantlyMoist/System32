@@ -33,7 +33,7 @@ public class SpawnHandler {
         try {
             configuration.save(spawnFile);
         } catch (IOException exception) {
-            Bukkit.getLogger().warning("[System32]: SpawnCommand file could not be saved!");
+            Bukkit.getLogger().warning("[System32]: Spawn file could not be saved!");
         }
     }
 

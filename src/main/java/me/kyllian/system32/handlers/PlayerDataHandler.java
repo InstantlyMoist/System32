@@ -63,7 +63,6 @@ public class PlayerDataHandler extends BukkitRunnable implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-
         if (players.containsKey(player)) {
             System32Player system32Player = players.get(player);
             system32Player.savePlayerData();

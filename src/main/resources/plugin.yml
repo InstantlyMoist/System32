@@ -1,5 +1,5 @@
 name: System32
-version: 1.002
+version: 1.003
 description: The must have essential for every server!
 main: me.kyllian.system32.System32Plugin
 softdepend: [PlaceholderAPI]
@@ -21,3 +21,43 @@ commands:
     usage: /<command>
     description: Default
     aliases: [removespawn, remspawn, deletespawn]
+  system32:
+    usage: /<command>
+    description: Default
+    aliases: [system, sys]
+  heal:
+    usage: /<command>
+    description: Default
+  feed:
+    usage: /<command>
+    description: Default
+  gamemode:
+    usage: /<command>
+    description: Default
+    aliases: [gm]
+  gms:
+    usage: /<command>
+    description: Default
+  gmc:
+    usage: /<command>
+    description: Default
+  gma:
+    usage: /<command>
+    description: Default
+  gmsp:
+    usage: /<command>
+    description: Default
+  warp:
+    usage: /<command>
+    description: Default
+  warps:
+    usage: /<command>
+    description: Default
+  setwarp:
+    usage: /<command>
+    description: Default
+    aliases: [createwarp]
+  delwarp:
+    usage: /<command>
+    description: Default
+    aliases: [deletewarp, remwarp, removewarp]

@@ -27,7 +27,12 @@ public class GroupHandler {
         if (!groupFile.exists()) plugin.saveResource("groups.yml", false);
         configuration = YamlConfiguration.loadConfiguration(groupFile);
 
+        initialize(false);
+    }
+
+    public void initialize(boolean load) {
         groups = new ArrayList<>();
+        if (load) loadGroups();
     }
 
     public void loadGroups() {
@@ -65,6 +70,7 @@ public class GroupHandler {
 
     public void reloadGroups() {
         configuration = YamlConfiguration.loadConfiguration(groupFile);
+        initialize(true);
     }
 
     public boolean getDefault(String groupName) {

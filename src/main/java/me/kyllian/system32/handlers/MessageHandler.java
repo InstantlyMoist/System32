@@ -188,7 +188,7 @@ public class MessageHandler {
     }
 
     public String getUpdateFoundMessage(String oldVersion, String newVersion) {
-        return translateColors(configuration.getString("UpdateFound").replace("%oldversion%", oldVersion).replace("%newversion%", newVersion).replace("%url&", plugin.getUpdateChecker().getResourceURL()));
+        return translateColors(configuration.getString("UpdateFound").replace("%oldversion%", oldVersion).replace("%newversion%", newVersion).replace("%url%", plugin.getUpdateChecker().getResourceURL()));
     }
 
     public String getMustBeAPlayerMessage() {
@@ -213,5 +213,61 @@ public class MessageHandler {
 
     public String getSpawnRemovedMessage() {
         return translateColors(configuration.getString("SpawnRemoved"));
+    }
+
+    public String getReloadedMessage() {
+        return translateColors(configuration.getString("Reloaded"));
+    }
+
+    public String getHealedMessage() {
+        return translateColors(configuration.getString("Healed"));
+    }
+
+    public String getHealedOtherMessage(String playerName) {
+        return translateColors(configuration.getString("HealedOther").replace("%player_name%", playerName));
+    }
+
+    public String getFeedMessage() {
+        return translateColors(configuration.getString("Feed"));
+    }
+
+    public String getFeedOtherMessage(String playerName) {
+        return translateColors(configuration.getString("FeedOther").replace("%player_name%", playerName));
+    }
+
+    public String getGamemodeChangedMessage(String gamemode) {
+        return translateColors(configuration.getString("GamemodeChanged").replace("%gamemode%", gamemode));
+    }
+
+    public String getGamemodeChangedOtherMessage(String playerName, String gamemode) {
+        return translateColors(configuration.getString("GamemodeChangedOther").replace("%gamemode%", gamemode).replace("%player_name%", playerName));
+    }
+
+    public String getWarpDoesNotExistMessage(String warpName) {
+        return translateColors(configuration.getString("WarpDoesNotExist").replace("%warp%", warpName));
+    }
+
+    public String getWarpedMessage(String warpName) {
+        return translateColors(configuration.getString("Warped").replace("%warp%", warpName));
+    }
+
+    public String getWarpedOtherMessage(String playerName, String warpName) {
+        return translateColors(configuration.getString("WarpedOther").replace("%warp%", warpName).replace("%player_name%", playerName));
+    }
+
+    public String getWarpsMessage(String warps) {
+        return translateColors(configuration.getString("Warps").replace("%warps%", warps));
+    }
+
+    public String getWarpExistsMessage(String warpName) {
+        return translateColors(configuration.getString("WarpExists").replace("%warp%", warpName));
+    }
+
+    public String  getWarpCreatedMessage(String warpName) {
+        return translateColors(configuration.getString("WarpCreated").replace("%warp%", warpName));
+    }
+
+    public String getWarpRemovedMessage(String warpName) {
+        return translateColors(configuration.getString("WarpRemoved").replace("%warp%", warpName));
     }
 }
