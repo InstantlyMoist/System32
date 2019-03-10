@@ -40,7 +40,7 @@ public class MessageHandler {
     }
 
     public String translateColors(String message) {
-        return ChatColor.translateAlternateColorCodes('&', message);
+        return ChatColor.translateAlternateColorCodes('&', message.replace("\\n", "\n"));
     }
 
     public String translateColors(Player player, String message) {
@@ -269,5 +269,14 @@ public class MessageHandler {
 
     public String getWarpRemovedMessage(String warpName) {
         return translateColors(configuration.getString("WarpRemoved").replace("%warp%", warpName));
+    }
+
+    public String getCantKickMessage(String playerName) {
+        return translateColors(configuration.getString("CantKick").replace("%player_name%", playerName));
+    }
+
+    public String getKickMessage(String playerName, String reason) {
+        if (reason.isEmpty()) reason = "NONE";
+        return translateColors(configuration.getString("Kick").replace("%player_name%", playerName).replace("%reason%", reason));
     }
 }

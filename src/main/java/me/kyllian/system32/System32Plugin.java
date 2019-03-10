@@ -52,6 +52,7 @@ public class System32Plugin extends JavaPlugin {
         getCommand("setspawn").setExecutor(spawnCommand);
         getCommand("system32").setExecutor(new System32Command(this));
         getCommand("heal").setExecutor(new HealCommand(this));
+        getCommand("kick").setExecutor(new KickCommand(this));
         getCommand("feed").setExecutor(new FeedCommand(this));
         GamemodeCommand gamemodeCommand = new GamemodeCommand(this);
         getCommand("gamemode").setExecutor(gamemodeCommand);

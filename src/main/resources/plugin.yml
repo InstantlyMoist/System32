@@ -1,5 +1,5 @@
 name: System32
-version: 1.003
+version: 1.004
 description: The must have essential for every server!
 main: me.kyllian.system32.System32Plugin
 softdepend: [PlaceholderAPI]
@@ -26,6 +26,9 @@ commands:
     description: Default
     aliases: [system, sys]
   heal:
+    usage: /<command>
+    description: Default
+  kick:
     usage: /<command>
     description: Default
   feed:
